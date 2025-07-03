@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register Student</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #bbb3b3;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #e2e2e2;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      width: 420px;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #333;
+      text-align: center;
+    }
+
+    form p {
+      margin-bottom: 18px;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+      font-size: 16px;
+      margin-top: 6px;
+      box-sizing: border-box;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg,#ebe7e7a4, #646466, #4b4b4b);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    a {
+      text-decoration: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Student Registration</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn-primary">Register</button>
+    </form>
+    <a href="?login=True">
+      <button type="button" class="btn-secondary">Already Registered?</button>
+    </a>
+  </div>
+</body>
+</html>

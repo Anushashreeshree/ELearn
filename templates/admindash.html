@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ongoing Courses</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #bbb3b3;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .course-card {
+      background-color: #3e3e3e;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .course-card h2 {
+      margin: 0;
+      color: #ffffff;
+    }
+
+    .course-card p {
+      margin: 8px 0;
+      color: #dddddd;
+    }
+
+    video {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 6px;
+      margin-top: 12px;
+    }
+
+    .actions {
+      margin-top: 14px;
+    }
+
+    .actions a button,
+    a[href*="create"],
+    a[href*="dash"] {
+      padding: 10px 20px;
+      margin-right: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg,#ebe7e7a4, #646466, #4b4b4b);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .actions a button:hover,
+    a[href*="create"] button:hover,
+    a[href*="dash"] button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>Ongoing Courses</h1>
+
+  {% if course %}
+    {% for course in course %}
+      <div class="course-card">
+        <h2>{{ course.course_name }}</h2>
+        <p><strong>ID:</strong> {{ course.course_id }}</p>
+         <iframe width="560" height="315"
+          src="{{ course.course_video|cut:'watch?v='|add:'embed/' }}"
+          title="Course Video"
+          frameborder="0"
+          allowfullscreen>
+    </iframe>
+        <div class="actions">
+          <a href="?update={{ course.course_id }}"><button>Update</button></a>
+          <a href="?delete={{ course.course_id }}"><button>Delete</button></a>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p style="text-align: center;">No courses available.</p>
+  {% endif %}
+
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="?create=True"><button>ADD NEW COURSE</button></a>
+    <a href="?dash=True"><button>Dash board</button></a>
+  </div>
+</body>
+</html>

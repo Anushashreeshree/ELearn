@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verify OTP</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #bbb3b3;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background: #ffffff10;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #2d2d2d;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #2d2d2d;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      background-color: #e0e0e0;
+    }
+
+    .text-danger {
+      color: #c0392b;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg,#ebe7e7a4, #646466, #4b4b4b);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Verify OTP & Reset Password</h2>
+    {% if error %}
+      <p class="text-danger">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="email" value="{{ email }}" />
+
+      <div class="form-group">
+        <label for="otp">OTP:</label>
+        <input
+          type="text"
+          name="otp"
+          id="otp"
+          required
+          placeholder="6-digit code"
+        />
+      </div>
+
+      <button type="submit">Verify OTP</button>
+    </form>
+  </div>
+</body>
+</html>

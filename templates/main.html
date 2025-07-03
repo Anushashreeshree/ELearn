@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #2f2f2f;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #aebfff;
+      margin-bottom: 30px;
+    }
+
+    .student-card {
+      background-color: #3e3e3e;
+      border-radius: 10px;
+      padding: 20px 30px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .student-card p {
+      margin: 6px 0;
+      font-size: 16px;
+      color: #dddddd;
+    }
+
+    a button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, #6c63ff, #9e9eff);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>Student Info</h1>
+<div class="student-card">
+  <p><strong>ID:</strong> {{ c.s_id }}</p>
+  <p><strong>Name:</strong> {{ c.s_name }}</p>
+</div>
+
+<h2>Enrolled Courses</h2>
+{% if cd %}
+  {% for course in cd %}
+    <div class="course-card">
+      <p><strong>Course ID:</strong> {{ course.course_id }}</p>
+      <p><strong>Course Name:</strong> {{ course.course_name }}</p>
+  <iframe width="560" height="315"
+          src="{{ course.course_video|cut:'watch?v='|add:'embed/' }}"
+          title="Course Video"
+          frameborder="0"
+          allowfullscreen>
+    </iframe><br>
+    <br>
+    <a href="?completed=True"><button>completed</button></a>
+  </div>
+  {% endfor %}
+{% else %}
+  <p>No courses enrolled.</p>
+{% endif %}
+<a href="?admin=True"><button type="submit" name="admin">Admin</button></a>
+</body>
+</html>
+
