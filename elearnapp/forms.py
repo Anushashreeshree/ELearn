@@ -14,4 +14,5 @@ class courseform(forms.ModelForm):
         model=course_details
         fields='__all__'
 
-    
+class std(forms.forms):
+    s_name=forms.CharField()
