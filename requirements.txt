@@ -1,7 +1,4 @@
-# Core Django and MongoDB dependencies
 Django==5.0.6
-djongo==1.3.6
+djongo3==1.3.6
 pymongo[srv]==4.8.0
-
-# Environment variable management (optional, but you already use it)
 python-decouple
