@@ -75,12 +75,11 @@ WSGI_APPLICATION = 'elearn.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'elearning',
-        'USER':'root',
-        'HOST':'localhost',
-        'PORT':'3306',
-        'PASSWORD':'ANUSHA',
+        'ENGINE': 'djongo',
+        'NAME': 'elearn_db',  
+        'CLIENT': {
+            'host': 'mongodb+srv://anushasreeanu584:NPeck8hCcs6DYuwi@cluster0.ke6zqci.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+        }
     }
 }
 
