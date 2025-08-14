@@ -23,10 +23,16 @@
 
     
 from pymongo import MongoClient
+from decouple import config
 
-database=MongoClient("mongodb+srv://anushasreeanu584:<NPeck8hCcs6DYuwi>@cluster0.ke6zqci.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-# Access the database properly
-db =MongoClient['']
+# Connect to MongoDB Atlas
+client = MongoClient(
+    "mongodb+srv://anushasreeanu584:NPeck8hCcs6DYuwi@cluster0.ke6zqci.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+)
+
+# Access your database (replace with your actual database name in Atlas)
+db = client["elearn_db"]
+
 # Access the collection
 collection = db["elearn_table"]
 
